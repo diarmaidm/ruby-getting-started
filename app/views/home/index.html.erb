@@ -1,6 +1,5 @@
 <script type="text/javascript">
 $(function() {
- console.log('DOM ready!');
  // show a preloader or something
 
   $.ajax({
@@ -18,7 +17,7 @@ $(function() {
     url: "http://api.openweathermap.org/data/2.5/forecast/daily?q=London&units=metric&cnt=16&APPID=0c6168aaef3f250fa30f72fa14a6194a",
     cache: false,
     success: function(data){
-      console.log('Got the result: ',JSON.stringify(data.list, null, '  '));
+      // console.log('Got the result: ',JSON.stringify(data.list, null, '  '));
       var long_details = data.list.reduce((accum, cur) => {
 
         return accum += '<div class="col-md-1">' +
@@ -60,7 +59,7 @@ $(function() {
       </form>
       <ul class="nav navbar-nav">
         <li>
-          <a href="/about">About Page</a>
+          <a href="/about">About</a>
         </li>
       </ul>
     </div>
