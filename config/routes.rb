@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get 'home/index'
+  get '/about' => 'about#about'
+  # get 'home/index'
 
   resources :widgets
 
