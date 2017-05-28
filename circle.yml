@@ -1,0 +1,14 @@
+## Customize the test machine
+machine:
+
+  # Version of ruby to use
+  ruby:
+    version:
+      2.3.4
+
+## Customize deployment commands
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: hu-weather
