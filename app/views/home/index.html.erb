@@ -1,0 +1,99 @@
+<script type="text/javascript">
+$(function() {
+ console.log('DOM ready!');
+ // show a preloader or something
+
+  $.ajax({
+    url: "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=0c6168aaef3f250fa30f72fa14a6194a",
+    cache: false,
+    success: function(data){
+      $("#temperature").append(Math.round(data.main.temp)+"°C");
+      $("#main").append(data.weather[0].main);
+      $("#description").append(data.weather[0].description);
+      $("#city_name").append(data.name);
+    }
+  });
+
+  $.ajax({
+    url: "http://api.openweathermap.org/data/2.5/forecast/daily?q=London&units=metric&cnt=16&APPID=0c6168aaef3f250fa30f72fa14a6194a",
+    cache: false,
+    success: function(data){
+      console.log('Got the result: ',JSON.stringify(data.list, null, '  '));
+      var long_details = data.list.reduce((accum, cur) => {
+
+        return accum += '<div class="col-md-1">' +
+          '<div class="row">' +
+            '<label>' + new Date(cur.dt*1000).toDateString() + '</label>' + '<br>' +
+            '<label>' + cur.temp.day + '</label>' + '<br>' +
+            '<label>' + cur.weather[0].main + '</label>' + '<br>' +
+            '<label>' + cur.weather[0].description + '</label>' + '<br>' +
+            '<img alt="' + cur.weather[0].description + '" src="http://openweathermap.org/img/w/' + cur.weather[0].icon + '.png">' +
+          '</div>' +
+        '<br>' + '<br>' +
+        '</div>'
+
+
+      }, '');
+
+      <%#console.log('long_details', long_details);%>
+      $("#long_forecast").append(long_details);
+      // hide preloader
+    }
+  });
+
+
+});
+</script>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-brand">
+      <a href="https://playon.co/">PLAYON</a>
+    </div>
+    <div class="navbar-right">
+      <form class="nav navbar-nav navbar-form" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <%= link_to "Search", "#", class: "btn btn-lg btn-primary" %>
+      </form>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1">
+            <h1 id="temperature"></h1>
+          </div>
+          <div class="col-md-1">
+            <div class="container">
+              <div class="row text-muted">
+                <label id="main"></label>
+              </div>
+              <div class="row text-muted">
+                <label id="description"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1">
+            <h2 id="city_name"></h2>
+          </div>
+        </div>
+
+
+      <div class="row" id="long_forecast">
+      </div>
+
+    </div>
+  </div>
