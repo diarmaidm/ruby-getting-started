@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>Ruby Getting Started on Heroku</title>
-    <!-- Latest compiled and minified CSS -->
+  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag  '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -11,6 +13,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-brand">
+      <a href="https://playon.co/">PLAYON</a>
+    </div>
+    <div class="navbar-right">
+      <form class="nav navbar-nav navbar-form" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <%= link_to "Search", "#", class: "btn btn-lg btn-primary" %>
+      </form>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <%= yield %>
 
