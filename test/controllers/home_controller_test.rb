@@ -6,7 +6,7 @@ class HomeControllerTest < ActionController::TestCase
     assert_response :success
     assert_select "a", "PLAYON"
     assert_select "button", "Submit"
-    assert_select 'title', "Ruby Getting Started on Heroku"
+    assert_select 'title', "Weather App for city"
   end
 
 end
