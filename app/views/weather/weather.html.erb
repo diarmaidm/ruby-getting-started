@@ -1,0 +1,57 @@
+<div>
+  <h1>Weather Forcast</h1>
+</div>
+
+<hr>
+
+<form class="nav navbar-nav navbar-form" role="search">
+  <div class="form-group">
+  <%#<div id='field_to_submit'>%>
+    <%= text_field :searchcity ,:name,:class=>'roundRect',:id=>'name' %>
+  <%#</div>%>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-1">
+          <h1 id="temperature"><%= @temperature %></h1>
+        </div>
+        <div class="col-md-1">
+          <div class="container">
+            <div class="row text-muted">
+              <label id="main"><%= @main %></label>
+            </div>
+            <div class="row text-muted">
+              <label id="description"><%= @description %></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1">
+          <h2 id="city_name"><%= @city %>, <%= @current['sys']['country'] %></h2>
+        </div>
+      </div>
+
+      <hr>
+
+    <% @daylist.each do |day| %>
+      <div class="col-md-1">
+        <div class="row">
+          <label><%= day['temp']['day'] %></label> <br>
+          <label><%= day['weather'].first['main'] %></label> <br>
+          <label><%= day['weather'].first['description'] %></label> <br>
+          <img alt="<%= day['weather'].first['description'] %>" src="http://openweathermap.org/img/w/<%= day['weather'].first['icon'] %>.png">
+        </div>
+      <br> <br>
+      </div>
+    <% end %>
+
+  </div>
+</div>

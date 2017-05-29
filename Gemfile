@@ -32,6 +32,9 @@ gem 'spring',        group: :development
 
 gem 'puma'
 
+# ruby wrapper for Open Weather Map API.
+gem 'open-weather'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

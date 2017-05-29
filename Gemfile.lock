@@ -70,6 +70,8 @@ GEM
     multi_json (1.12.1)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
+    open-weather (0.12.0)
+      json (~> 1)
     pg (0.20.0)
     puma (3.8.2)
     rack (1.6.5)
@@ -143,6 +145,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
+  open-weather
   pg
   puma
   rails (= 4.2.8)
@@ -157,4 +160,4 @@ RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.14.6
+   1.15.0

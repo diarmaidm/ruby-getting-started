@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  # get 'weather/weather'
+
   root 'home#index'
 
   get '/about' => 'about#about'
+  get '/weather' => 'weather#weather'
   # get 'home/index'
 
   resources :widgets
